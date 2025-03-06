@@ -54,6 +54,7 @@ class Order:
         self.customer = customer
         self.products = {}
         self.total_price = 0
+        self.discount_amount = 0
         self.process_order(products)
 
     def process_order(self, products):
@@ -78,7 +79,9 @@ class Order:
             most_expensive = max(self.products, key=lambda p: p.price)
             quantity = self.products[most_expensive]
             discount = 10 + quantity if quantity < 5 else 15
-            self.total_price -= most_expensive.price * quantity * (discount / 100)
+            discount_value = most_expensive.price * quantity * (discount / 100)
+            self.discount_amount = discount_value
+            self.total_price -= discount_value
 
     def log_unavailability(self, unavailable):
         with open("order_log.txt", "a", encoding='utf-8') as file:
@@ -101,10 +104,14 @@ def receipt_decorator(func):
     def wrapper(order, *args, **kwargs):
         result = func(order, *args, **kwargs)
         print("\n===== ЧЕК =====")
-        print(order)
+        print(f"Order for {order.customer.first_name} {order.customer.last_name}")
+
         for product, quantity in order.products.items():
-            print(f"{product.name}: {quantity} x {product.price}$")
-        print(f"Загальна сума: {order.total_price}$")
+            total_product_price = quantity * product.price
+            print(f"{product.name}: {quantity} x {product.price}$ = {total_product_price}$")
+
+        print(f"Знижка: -{order.discount_amount}$")
+        print(f"Загальна сума після знижки: {order.total_price}$")
         print("================\n")
         return result
 
@@ -119,9 +126,9 @@ def generate_receipt(order):
 if __name__ == "__main__":
     product1 = Product("Ноутбук", 1000, 10)
     product2 = Product("Смартфон", 500, 5)
-    product3 = Product("Планшет", 700, 0)
+    product3 = Product("Планшет", 700, 2)
 
     customer = Customer(1, "Іван", "Петров", "+380501234567")
-    order = Order(customer, {product1: 2, product2: 6, product3: 1})
+    order = Order(customer, {product1: 2, product2: 3, product3: 1})
 
     generate_receipt(order)
