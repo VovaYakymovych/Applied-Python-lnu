@@ -116,7 +116,6 @@ def generate_receipt(order):
     return order
 
 
-# Приклад використання:
 if __name__ == "__main__":
     product1 = Product("Ноутбук", 1000, 10)
     product2 = Product("Смартфон", 500, 5)
