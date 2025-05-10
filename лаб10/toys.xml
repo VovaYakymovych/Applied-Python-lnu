@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toys>
+    <toy>
+        <name>М'яч</name>
+        <price>150</price>
+        <age_category>1+</age_category>
+    </toy>
+    <toy>
+        <name>Лялька</name>
+        <price>350</price>
+        <age_category>3+</age_category>
+    </toy>
+    <toy>
+        <name>Конструктор</name>
+        <price>600</price>
+        <age_category>5+</age_category>
+    </toy>
+    <toy>
+        <name>Плюшевий ведмідь</name>
+        <price>280</price>
+        <age_category>0+</age_category>
+    </toy>
+    <toy>
+        <name>Пазл</name>
+        <price>120</price>
+        <age_category>3+</age_category>
+    </toy>
+    <toy>
+        <name>Настільна гра</name>
+        <price>450</price>
+        <age_category>6+</age_category>
+    </toy>
+    <toy>
+        <name>Робот</name>
+        <price>850</price>
+        <age_category>7+</age_category>
+    </toy>
+    <toy>
+        <name>Розвиваючий килимок</name>
+        <price>350</price>
+        <age_category>0+</age_category>
+    </toy>
+    <toy>
+        <name>Машинка</name>
+        <price>180</price>
+        <age_category>2+</age_category>
+    </toy>
+    <toy>
+        <name>Кубики</name>
+        <price>200</price>
+        <age_category>1+</age_category>
+    </toy>
+</toys>
